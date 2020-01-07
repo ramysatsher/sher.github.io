@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>QR Code Scanner &laquo; TS.Net</title>				
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Content-Language" content="en" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+
+	
+	
+<style type="text/css">
+body{margin:0;color:#333;padding:10px 8px 8px;font-size:15px;font-family:Tahoma,Arial,sans-serif;background-color:#fff}.kangndo1{width:auto;min-width:500px;max-width:980px;border-spacing:0;border-collapse:collapse;margin:80px auto;padding:0}#kangndo2{padding:10px 10px 0;border:1px solid #FF8C00;border-bottom-width:0;border-radius:7px 7px 0 0;background-color:#FF8C00}#kangndo3{text-align:center;padding:5px;border:1px solid #ececec;border-bottom-width:0;background-color:#f4f4f4;border-radius:5px 5px 0 0}.kangndo4{color:#FF0000;font-size:40px;font-family:calibri; font-weight: bold; text-shadow: #000000 2px 3px 3px}#kangndo5{white-space:nowrap;background-color:#E9692C}.kangndo6{color:#fff;font-size:24px;padding:5px 0;text-align:center}#kangndo7{padding:0 10px 10px;border:1px solid #FF8C00;border-top-width:0;border-radius:0 0 7px 7px;background-color:#FF8C00}#kangndo8{padding:30px;border:1px solid #ececec;border-top-width:0;background-color:#f4f4f4;border-radius:0 0 7px 7px}#kangndo9{text-align:center;display:block}.kangndo10{min-width:70%;display:inline-block;color:#fff!important;padding:10px 12px;margin:6px;font-size:14px;font-weight:700;text-align:center;white-space:nowrap;vertical-align:middle;cursor:pointer;border:1px solid #FF8C00;border-radius:4px;box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 1px 1px rgba(0,0,0,0.075);text-shadow:0 -1px 0 rgba(0,0,0,0.2);background-color:#FF8C00}.kangndo10:hover{background-color:#E9692C}.kangndo11{min-width:260px;margin:0 0 5px}input{border:1px solid #b2bcc0;border-radius:4px;padding:12px;box-shadow:0 0 5px #E7E7E7 inset}@media only screen and (max-width: 800px){.kangndo1{min-width:60%;max-width:none;border-spacing:0;border-collapse:collapse;margin:0 auto}.kangndo6{font-size:1.2em;padding:.25em}.kangndo11{min-width:60%;width:auto}#kangndo8{padding:1em}.kangndo4{font-size:1.2em;padding:.25em}
+}
+
+.link button{color:#fff!important;padding:10px 12px;margin:6px;font-size:14px;font-weight:700;text-align:center;white-space:nowrap;vertical-align:middle;cursor:pointer;border:1px solid #FFFFFF;border-radius:4px;box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 1px 1px rgba(0,0,0,0.075);text-shadow:0 -1px 0 rgba(0,0,0,0.2);background-color:#6c7093}
+.link button:hover {background-color: #ffaf4f}
+</style>
+
+<style type="text/css">
+body{
+    width:100%;
+    text-align:center;
+}
+img{
+    border:0;
+}
+#main{
+    margin: 15px auto;
+    overflow: auto;
+	width: 100%;
+}
+
+#mainbody{
+    width:100%;
+	display:none;
+}
+
+#v{
+    width:320px;
+    height:240px;
+}
+#qr-canvas{
+    display:none;
+}
+#qrfile{
+    width:320px;
+    height:240px;
+}
+#mp1{
+    text-align:center;
+    font-size:35px;
+}
+#imghelp{
+    position:relative;
+    left:0px;
+    top:-160px;
+    z-index:100;
+    font:18px arial,sans-serif;
+    background:#f0f0f0;
+	margin-left:35px;
+	margin-right:35px;
+	padding-top:10px;
+	padding-bottom:10px;
+	border-radius:20px;
+}
+.selector{
+    margin:0;
+    padding:0;
+    cursor:pointer;
+    margin-bottom:-5px;
+}
+#outdiv
+{
+    width:320px;
+    height:240px;
+	border: solid;
+	border-width: 3px 3px 3px 3px;
+	text-align: center;
+}
+
+
+ul{
+    margin-bottom:0;
+    margin-right:40px;
+}
+li{
+    display:inline;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    font-weight: bold;
+    border-right: 1px solid #333333;
+}
+li a{
+    text-decoration: none;
+    color: black;
+}
+
+.tsel{
+    padding:0;
+}
+
+</style>
+
+</head>
+<body>
+<table class="kangndo1">
+<tr>
+<td>
+<div id="kangndo2">
+<div id="kangndo3">
+
+<!--HEADER-->															
+<span class="kangndo4"> Tunick Service Internet </span>								
+
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td id="kangndo5" class="link" style="background-color: #237d1c; padding: 5px 0">
+<div style="float: left; width: 30%; margin:0 2% 0 3%;"><button onclick="FormVoucher()" style="padding: 10px; width: 100%; margin: 0 3px 0 0;">Voucher</button></div>
+<div style="float: left; width: 30%;"><button onclick="FormMember()" style="padding: 10px; width: 100%; margin: 0 3px 0 0;">Member</button></div>
+<div style="float: left; width: 30%; margin:0 3% 0 2%;"><button onclick="FormScan()" style="padding: 10px; width: 100%; margin: 0 3px 0 0;">Scan</button></div>
+<div style="clear: both;">
+	
+</div>
+</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+<tr>
+<td id="kangndo5">
+<div class="kangndo6">
+<img style="position:relative; top:3px;" src="lock.png" alt=""/> <span id="loginD">Member</span> Login
+</div>
+</td>
+</tr>
+<tr>
+<td>
+
+
+<div id="kangndo7">
+<div id="kangndo8" style="text-align: center">
+<div id="main">
+<body>
+        <hr>
+        <canvas></canvas>
+        <hr>
+        <ul></ul>
+        <script type="text/javascript" src="js/qrcodelib.js"></script>
+        <script type="text/javascript" src="js/webcodecamjs.js"></script>
+        <script type="text/javascript">
+        	var txt = "innerText" in HTMLElement.prototype ? "innerText" : "textContent";
+            var arg = {
+                resultFunction: function(result) {
+                	var aChild = document.createElement('li');
+					window.open(result.code, "_self");
+                	aChild[txt] = result.code;
+                    document.querySelector('body').appendChild(aChild);
+                }
+            };
+            new WebCodeCamJS("canvas").init(arg).play();
+        </script>
+    </body>
+</div>
+	
+
+<br/>
+
+<!--CONTACT-->
+Contact Us:<br/><b>0819 1616 2221</b>
+</div>
+</div>
+
+
+</td>
+</tr>
+</table>
+</body>
+
+</html>
